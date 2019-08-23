@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<script src="https://cdn.bootcss.com/react/16.8.6/umd/react.development.js"></script>
+<script src="https://cdn.bootcss.com/react-dom/16.8.6/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.js"></script>
+<script src="https://cdn.bootcss.com/prop-types/15.7.2/prop-types.js"></script>
+<!-- <script type="text/javascript" src="./lib/babel.min.js"></script> -->
+<style type="text/css">
+
+</style>
+
+<body>
+    <div id="test"></div>
+    <script type="text/babel">
+        class App extends React.Component{
+           render(){
+               let {arr} = this.props
+               return (
+                    <div>
+                        {
+                            arr.map((item,index)=>{
+                                return <Welcome name={item} key={index} />
+                            })
+                        }
+                    </div>
+               )
+           }
+       }
+       class Welcome extends React.Component{
+            render(){
+                return(
+                    <h2>你好，{this.props.name}</h2>
+                )
+            }
+       }
+       let arr = ['Kobe','Yao','Iverson','Curry']
+       ReactDOM.render(<App arr={arr}/>,document.querySelector('#test'))
+	</script>
+</body>
+
+</html>
