@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<script src="https://cdn.bootcss.com/react/16.8.6/umd/react.development.js"></script>
+<script src="https://cdn.bootcss.com/react-dom/16.8.6/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.js"></script>
+<script src="https://cdn.bootcss.com/prop-types/15.7.2/prop-types.js"></script>
+<!-- <script type="text/javascript" src="./lib/babel.min.js"></script> -->
+<style type="text/css">
+
+</style>
+
+<body>
+    <div id="test"></div>
+    <script type="text/babel">
+       class App extends React.Component{
+           constructor(props){
+               console.log('constructor() ')
+               super(props)
+               this.state={
+                   Person:{
+                       name:'kobe',
+                       age:40
+                   }
+               }
+           }
+           render(){
+               console.log("render() 组件给挂载了")
+               return (
+                    <div>
+                        <h1>hello,{this.state.Person.name},{this.state.Person.age}了哦！！</h1>
+                    </div>
+               )
+           }
+        //    组件即将被挂载
+           componentWillMount(){
+               console.log('componentWillMount() 组件即将被挂载')
+           }
+        //    组件挂载完毕
+            componentDidMount(){
+                console.log('componentWillMount() 组件挂载完毕')
+                // 组件数据更新
+                setTimeout(() => {
+                    this.setState({
+                        Person:{
+                            name:'wade',
+                            age:36
+                        }
+                    })
+                }, 2000);
+                //组件卸载
+                setTimeout(()=>{
+                    ReactDOM.unmountComponentAtNode(document.querySelector('#test'))
+                },4000)
+            }
+            // 组件接收数据即将更新
+            // componentWillReceiveProps(){
+            //     console.log('接收更新的数据')
+            // }
+            // 组件即将更新
+            componentWillUpdate(){
+                console.log('componentWillUpdate() 组件即将更新')
+            }
+            //组件更新完毕
+            componentDidUpdate(){
+                console.log('componentDidUpdate() 组件更新完毕')
+            }
+            //组件即将被卸载
+            componentWillUnmount(){
+                console.log('componentWillUnmount() 组件卸载')
+            }
+       }
+       ReactDOM.render(<App/>,document.querySelector('#test'))
+	</script>
+</body>
+
+</html>

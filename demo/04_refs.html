@@ -17,26 +17,23 @@
 <body>
     <div id="test"></div>
     <script type="text/babel">
-       class App extends React.Component{
+       class Demo extends React.Component{
+           constructor(props){
+               super(props);
+           }
            render(){
                return (
                     <div>
-                        <h1>hello,world</h1>
+                        <input type="text" ref="msg"/>
+                        <button onClick={this.handleClick.bind(this)}>refs测试</button>
                     </div>
                )
            }
+           handleClick(){
+               console.log(this.refs.msg.value)
+           }
        }
-    //    设置props默认值
-
-       App.defaultProps = {
-           sex:'女'
-       }
-    //    检查props字符类型,仅在开发模式下有效
-    //    App.propTypes = {
-    //        name : PropTypes.string.isRequired,
-    //        age : PropTypes.number.isRequired
-    //    }
-       ReactDOM.render(<App/>,document.querySelector('#test'))
+       ReactDOM.render(<Demo />,document.querySelector('#test'))
 	</script>
 </body>
 
